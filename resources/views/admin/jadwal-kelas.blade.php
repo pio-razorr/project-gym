@@ -1,14 +1,14 @@
 @extends('admin.layout.main')
 
-@section('title', 'Data jadwal')
+@section('title', 'Jadwal')
 
 @section('contents')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Jadwal</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data jadwal</h6>
     </div>
     <div class="card-body">
-        <a href="/tambah-jadwal" class="btn btn-primary mb-3">Tambah Jadwal </a>
+        <a href="/tambah-jadwal" class="btn btn-primary mb-3">Tambah jadwal</a>
 
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

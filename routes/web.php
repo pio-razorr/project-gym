@@ -47,7 +47,7 @@ Route::get('/kelas', [KelasController::class, 'index']);
 Route::get('/tambah-kelas', [KelasController::class, 'create']);
 Route::post('/tambah-kelas', [KelasController::class, 'store']);
 Route::get('/edit-kelas/{id}', [KelasController::class, 'edit']);
-Route::post('update-kelas/{id}', [KelasController::class, 'update'])->name('kelas');
+Route::put('edit-kelas/{id}', [KelasController::class, 'update']);
 Route::delete('/kelas/{id}', [KelasController::class, 'destroy']);
 
 
@@ -58,6 +58,7 @@ Route::post('/tambah-jadwal', [JadwalController::class, 'store']);
 Route::get('/edit-jadwal/{id}', [JadwalController::class, 'edit']);
 Route::put('/edit-jadwal/{id}', [JadwalController::class, 'update']);
 Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy']);
+
 
 Route::get('/login', [LoginController::class, 'login']);
 Route::post('/login', [LoginController::class, 'login']);

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_kelas');
             $table->string('nama_pelatih');
             $table->string('hari');
-            $table->timestamp('jam');
+            $table->time('jam');
             $table->string('image');
             $table->string('durasi_kelas');
             $table->timestamps();

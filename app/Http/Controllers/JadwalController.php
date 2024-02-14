@@ -24,7 +24,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-         return view('admin.tambah-jadwal');
+        return view('admin.tambah-jadwal');
 
 
     }
@@ -58,7 +58,7 @@ class JadwalController extends Controller
             'hari' => $request->hari,
         ]);
         //redirect to index
-        return redirect('jadwal')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect('jadwal-kelas')->with(['success' => 'Data Berhasil Disimpan!']);
 
     }
 
@@ -66,21 +66,21 @@ class JadwalController extends Controller
      * Display the specified resource.
      */
 
-     public function show(string $id)
-     {
+    public function show(string $id)
+    {
 
-     }
+    }
 
-     /**
-      * Show the form for editing the specified resource.
-      */
-     // fungsi menambilkan data setelah di edit
+    /**
+     * Show the form for editing the specified resource.
+     */
+    // fungsi menambilkan data setelah di edit
     public function edit(string $id)
     {
-         //get post by ID
-         $jadwal = Jadwal::findOrFail($id);
+        //get post by ID
+        $jadwal = Jadwal::findOrFail($id);
 
-         return view('admin.edit-jadwal', compact('jadwal'));
+        return view('admin.edit-jadwal', compact('jadwal'));
     }
 
     /**
@@ -89,52 +89,52 @@ class JadwalController extends Controller
     public function update(Request $request, string $id)
     {
 
-     //validate form
-     $this->validate($request, [
-        'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-        'nama_kelas' => 'required',
-        'nama_pelatih' => 'required',
-        'durasi_kelas' => 'required',
-        'jam' => 'required',
-        'hari' => 'required',
-    ]);
+        //validate form
+        $this->validate($request, [
+            'image' => 'image|mimes:jpeg,jpg,png|max:2048',
+            'nama_kelas' => 'required',
+            'nama_pelatih' => 'required',
+            'durasi_kelas' => 'required',
+            'hari' => 'required',
+            'jam' => 'required'
+        ]);
 
-    //get post by ID
-    $jadwal = Jadwal::findOrFail($id);
+        //get post by ID
+        $jadwal = Jadwal::findOrFail($id);
 
-    //update nama_kelas and nama_pelatih
-    $jadwal->nama_kelas = $request->nama_kelas;
-    $jadwal->nama_pelatih = $request->nama_pelatih;
-    $jadwal->durasi_kelas = $request->durasi_kelas;
-    $jadwal->jam = $request->jam;
-    $jadwal->hari = $request->hari;
+        //update nama_kelas and nama_pelatih
+        $jadwal->nama_kelas = $request->nama_kelas;
+        $jadwal->nama_pelatih = $request->nama_pelatih;
+        $jadwal->durasi_kelas = $request->durasi_kelas;
+        $jadwal->hari = $request->hari;
+        $jadwal->jam = $request->jam;
 
-    //check if image is uploaded
-    if ($request->hasFile('image')) {
-        //upload new image
-        $image = $request->file('image');
-        $image->storeAs('public/posts', $image->hashName());
+        //check apakah image diupload
+        if ($request->hasFile('image')) {
+            //upload image baru
+            $image = $request->file('image');
+            $image->storeAs('public/posts', $image->hashName());
 
-        //delete old image
-        Storage::delete('public/posts/' . $jadwal->image);
+            //delete image lama
+            Storage::delete('public/posts/' . $jadwal->image);
 
-        //update image
-        $jadwal->image = $image->hashName();
+            //update image
+            $jadwal->image = $image->hashName();
+        }
+
+        //save data
+        $jadwal->save();
+
+        //redirect to index
+
+        return redirect('jadwal-kelas')->with(['success' => 'Data Berhasil Disimpan!']);
     }
-
-    //save data
-    $jadwal->save();
-
-    //redirect to kelas
-    return redirect('tambah-jadwal')->with(['success' => 'Data Berhasil Diubah!']);
-}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        {
+    { {
             //get post by ID
             $jadwal = Jadwal::findOrFail($id);
 

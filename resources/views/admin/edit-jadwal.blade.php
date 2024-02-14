@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">
@@ -16,37 +16,35 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="nama_kelas">Nama Kelas</label>
-                            <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" value=""
-                                placeholder="Masukkan nama kelas">
+                            <input type="text" class="form-control" id="nama_kelas" name="nama_kelas"
+                                value="{{ $jadwal->nama_kelas }}" placeholder="Masukkan nama kelas">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Nama Pelatih</label>
-                            <input type="text" class="form-control" id="nama_pelatih" name="nama_pelatih" value=""
-                                placeholder="Masukkan nama pelatih">
+                            <label for="nama_pelatih">Nama Pelatih</label>
+                            <input type="text" class="form-control" id="nama_pelatih" name="nama_pelatih"
+                                value="{{ $jadwal->nama_pelatih }}" placeholder="Masukkan nama pelatih">
                         </div>
                         <div class="form-group">
-                            <label for="harga">Image</label>
+                            <label for="image">Image</label>
                             <input type="file" class="form-control" name="image">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Durasi Kelas </label>
-                            <input type="number" class="form-control" id="nama_pelatih" name="durasi_kelas" value=""
-                                placeholder="Masukkan durasi kelas">
+                            <label for="durasi">Durasi Kelas </label>
+                            <input type="number" class="form-control" id="durasi" name="durasi_kelas"
+                                value="{{ $jadwal->durasi_kelas }}" placeholder="Masukkan durasi kelas">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Hari</label>
-                            <input type="text" class="form-control" id="nama_pelatih" name="hari" value=""
-                                placeholder="Masukkan durasi kelas">
+                            <label for="hari">Hari</label>
+                            <input type="text" class="form-control" id="hari" name="hari"
+                                value="{{ $jadwal->hari }}" placeholder="Masukkan durasi kelas">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Jam</label>
-                            <input type="time" class="form-control" id="nama_pelatih" name="jam" value=""
-                                placeholder="Masukkan jam (format: HH:MM)">
+                            <label for="jam">Jam</label>
+                            <input type="time" class="form-control" id="jam" name="jam"
+                                value="{{ $jadwal->jam }}" placeholder="Masukkan jam (format: HH:MM)">
                         </div>
 
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </div>

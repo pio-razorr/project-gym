@@ -6,7 +6,7 @@
     <form action="/tambah-jadwal" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">
@@ -29,17 +29,17 @@
                         </div>
                         <div class="form-group">
                             <label for="nama_barang">Durasi Kelas </label>
-                            <input type="number" class="form-control" id="nama_pelatih" name="durasi_kelas" value=""
+                            <input type="number" class="form-control" id="nama_barang" name="durasi_kelas" value=""
                                 placeholder="Masukkan durasi kelas">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Hari</label>
-                            <input type="text" class="form-control" id="nama_pelatih" name="hari" value=""
+                            <label for="hari">Hari</label>
+                            <input type="number" class="form-control" id="hari" name="hari" value=""
                                 placeholder="Masukkan durasi kelas">
                         </div>
                         <div class="form-group">
-                            <label for="nama_barang">Jam</label>
-                            <input type="time" class="form-control" id="nama_pelatih" name="jam" value=""
+                            <label for="jam">Jam</label>
+                            <input type="time" class="form-control" id="jam" name="jam" value=""
                                 placeholder="Masukkan jam (format: HH:MM)">
                         </div>
 

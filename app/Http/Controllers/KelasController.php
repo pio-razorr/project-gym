@@ -39,7 +39,7 @@ class KelasController extends Controller
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'nama_kelas' => 'required',
             'nama_pelatih' => 'required',
-            'durasi'=> 'required',
+            'durasi' => 'required',
         ]);
 
         //upload image
@@ -51,7 +51,7 @@ class KelasController extends Controller
             'image' => $image->hashName(),
             'nama_kelas' => $request->nama_kelas,
             'nama_pelatih' => $request->nama_pelatih,
-            'durasi' => $request->durasi . ' menit'
+            'durasi' => $request->durasi
         ]);
 
         //redirect to index
@@ -72,7 +72,7 @@ class KelasController extends Controller
      * Show the form for editing the specified resource.
      */
     // fungsi menambilkan data di edit
-    public function edit(string $id)
+        public function edit(string $id)
     {
         //get post by ID
         $kelas = Kelas::findOrFail($id);
@@ -99,26 +99,27 @@ class KelasController extends Controller
         //update nama_kelas and nama_pelatih
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->nama_pelatih = $request->nama_pelatih;
+        $kelas->durasi = $request->durasi;
 
         //check apakah image diupload
         if ($request->hasFile('image')) {
-        //upload image baru
-        $image = $request->file('image');
-        $image->storeAs('public/posts', $image->hashName());
+            //upload image baru
+            $image = $request->file('image');
+            $image->storeAs('public/posts', $image->hashName());
 
-        //delete image lama
-        Storage::delete('public/posts/' . $kelas->image);
+            //delete image lama
+            Storage::delete('public/posts/' . $kelas->image);
 
-        //update image
-        $kelas->image = $image->hashName();
-    }
+            //update image
+            $kelas->image = $image->hashName();
+        }
 
         //save data
         $kelas->save();
 
         //redirect to index
-  
-        return redirect()->route('kelas')->with(['success' => 'Data Berhasil Disimpan!']);
+
+        return redirect('kelas')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
